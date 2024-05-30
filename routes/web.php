@@ -19,6 +19,7 @@ Route::middleware('auth')->group(function () {
 });
 
 // Expense related routes
+Route::middleware('auth')->group(function () {
 Route::get('expenses', [ExpenseController::class, 'index'])->name('expense.index');
 Route::get('expenses/create', [ExpenseController::class, 'create'])->name('expense.create');
 Route::post('expenses', [ExpenseController::class, 'store'])->name('expense.store');
@@ -27,4 +28,5 @@ Route::get('expenses/{expense}/edit', [ExpenseController::class, 'edit'])->name(
 Route::patch('expenses/{expense}', [ExpenseController::class, 'update'])->name('expense.update');
 Route::delete('expenses/{expense}', [ExpenseController::class, 'destroy'])->name('expense.destroy');
 
+});
 require __DIR__.'/auth.php';
