@@ -55,6 +55,18 @@
                     <x-file-input name="receipt" id="receipt" />
                     <x-input-error :messages="$errors->get('receipt')" class="mt-2" />
                 </div>
+                @if(Auth::user()->hasRole('Administrator'))
+                    <!-- Status (for admin users only) -->
+                    <div class="mt-2">
+                        <x-input-label for="status" :value="__('Status')" />
+                        <x-select-input id="status" name="status" :options="[
+                            'pending' => 'Pending',
+                            'approved' => 'Approved',
+                            'rejected' => 'Rejected',
+                        ]" class="mt-1 block w-full" selected="{{ $expense->status }}" />
+                        <x-input-error :messages="$errors->get('status')" class="mt-2" />
+                    </div>
+                @endif
 
                 <div class="flex items-center justify-end mt-4">
                     <a href="{{ route('expense.show', $expense->id) }}" class="mr-4">
