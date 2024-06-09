@@ -16,7 +16,8 @@ class Expense extends Model
         'unit_price',
         'category',
         'receipt',
-        'user_id'
+        'user_id',
+        'status'
     ];
     public function getTotalCostAttribute()
     {
