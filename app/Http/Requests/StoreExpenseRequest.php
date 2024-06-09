@@ -25,8 +25,10 @@ class StoreExpenseRequest extends FormRequest
             //
             "title"=> "required|string|max:255",
             "description"=> 'string',
-            "receipt" => 'sometimes|file|mimes:jpg, png, jpeg, pdf',
-            "quantity" => 'integer|min:1' 
+            "receipt" => 'required|file|mimes:jpg, png, jpeg, pdf',
+            "quantity" => 'integer|min:1',
+            "unit_price" => 'required',
+            "category" => "required"
         ];
     }
 }
