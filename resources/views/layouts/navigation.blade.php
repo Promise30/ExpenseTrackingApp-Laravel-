@@ -23,9 +23,19 @@
                         {{ __('Expenses') }}
                     </x-nav-link>
                 </div>
+                @if(!auth()->user()->hasRole('Administrator'))
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('expense.create')" :active="request()->routeIs('expense.create')">
                         {{ __('Create Expense') }}
+                    </x-nav-link>
+                </div>
+                @endif
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('notification.allNotifications')" :active="request()->routeIs('notification.allNotifications')">
+                        {{ __('Notifications') }}
+                        @if($unreadNotificationCount > 0)
+                            <span class="badge">({{ $unreadNotificationCount }})</span>
+                        @endif
                     </x-nav-link>
                 </div>
             </div>
