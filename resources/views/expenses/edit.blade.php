@@ -35,12 +35,14 @@
                 <div class="mt-2">
                     <x-input-label for="category" :value="__('Category')" />
                     <x-select-input id="category" name="category" :options="[
-                            'food' => 'Food',
-                            'utilities' => 'Utilities',
-                            'transportation' => 'Transportation',
-                            'leisure' => 'Leisure',
-                            'others' => 'Others'
-                        ]" class="mt-1 block w-full" selected="{{$expense->category}}" />
+                        'food' => 'Food',
+                        'utilities' => 'Utilities',
+                        'transportation' => 'Transportation',
+                        'leisure' => 'Leisure',
+                        'clothing' => 'Clothing',
+                        'miscellaneous' => 'Miscellaneous',
+                        'others' => 'Others',
+                    ]" class="mt-1 block w-full" :selected="$expense->category" />
                     <x-input-error :messages="$errors->get('category')" class="mt-2" />
                 </div>
 

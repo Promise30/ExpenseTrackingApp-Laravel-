@@ -11,7 +11,7 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ExpenseCreatedMail extends Mailable
+class ExpenseCreatedMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
     protected $expense;

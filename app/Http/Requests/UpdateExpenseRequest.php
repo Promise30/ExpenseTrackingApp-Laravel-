@@ -28,20 +28,13 @@ class UpdateExpenseRequest extends FormRequest
             "description" => 'string',
             "receipt" => 'sometimes|file',
             "quantity" => 'integer|min:1',
+            "unit_price" => 'required',
+            "category" => "required"
         ];
     
         if (auth()->user()->hasRole('Administrator')) {
             $rules['status'] = 'required|in:pending,approved,rejected';
         }
         return $rules;  
-        // return [
-        //     //
-        //     "title"=> "required|string|max:255",
-        //     "description"=> 'string',
-        //     "receipt" => 'sometimes|file',
-        //     "quantity" => 'integer|min:1' ,
-        //     //"status" => ['required', 'string', Rule::in(array_map(fn($case) => $case->value, ExpenseStatus::cases()))],
-        //     //'status' => 'required|string|in:approved,rejected,pending',
-        // ];
     }
 }

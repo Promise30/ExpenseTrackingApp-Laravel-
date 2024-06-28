@@ -13,7 +13,7 @@
           </p>
           <hr>
           <p class="text-gray-700 text-base">
-            Category: {{$expense->category}}
+            Category: {{ Str::title($expense->category) }}
            </p>
            <hr>
           <p class="text-gray-700 text-base">
@@ -33,7 +33,7 @@
           </p>
           <hr>
           <p class="text-gray-700 text-base">
-            Status: {{$expense->status}}
+            Status: {{ Str::title($expense->status) }}
           </p>
         </div>
         <div class="px-6 pb-2">

@@ -38,6 +38,8 @@
                             'utilities' => 'Utilities',
                             'transportation' => 'Transportation',
                             'leisure' => 'Leisure',
+                            'clothing' => 'Clothing',
+                            'miscellaneous' => 'Miscellaneous',
                             'others' => 'Others'
                         ]" class="mt-1 block w-full" selected="Select Category" />
                     <x-input-error :messages="$errors->get('category')" class="mt-2" />

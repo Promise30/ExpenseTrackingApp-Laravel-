@@ -57,9 +57,9 @@
         <h2>Your Notifications</h2>
     </div>
 
-    <ul class="list-none w-full mt-4 px-4">
+    <ul class="list-none w-full mt-4 px-12">
         @forelse ($notifications as $notification)
-        <li class="rounded-md w-full px-2 mb-2 border-solid border-2 border-gray-200 text-center hover:bg-violet-200">
+        <li class="rounded-md w-full px-2 py-4 mb-2 border-solid border-2 border-gray-200 text-center hover:bg-violet-400">
             {{-- @if($notification->read_at)
                 read-notification
             @else
@@ -80,11 +80,15 @@
         {{$notifications->links()}}
         @if(auth()->user()->unreadNotifications->count() != 0) 
         <div class="w-full flex justify-center items-center mt-4">
-            <a href="{{ route('notification.readAll') }}">
-                <x-secondary-button>
-                    Mark all as read
-                </x-secondary-button>
-            </a>
+            {{-- <a href="{{ route('notification.readAll') }}"> --}}
+                <form action="{{route('notification.readAll')}}" method="post">
+                    @csrf
+                    <x-primary-button>
+                        Mark all as read
+                    </x-primary-button>
+                </form>
+                
+            {{-- </a> --}}
         </div>
         @endif 
     </ul>

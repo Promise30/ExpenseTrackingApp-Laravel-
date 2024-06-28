@@ -1,11 +1,23 @@
 <x-app-layout>
-    @if(Session::has('success'))
+    {{-- @if(Session::has('success'))
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             Swal.fire({
                 title: 'Success!',
                 text: "{{ session('success') }}",
                 icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        });
+    </script>
+    @endif --}}
+    @if (session('alert_type') && session('alert_message'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                title: '{{ session('alert_type') == 'success' ? 'Success' : 'Error' }}',
+                text: '{{ session('alert_message') }}',
+                icon: '{{ session('alert_type') }}',
                 confirmButtonText: 'OK'
             });
         });
@@ -77,7 +89,7 @@
             <tr>
                 <td class="text-center  border-2 border-indigo-500/25">{{$expense->id}}</td>
                 <td class="text-center  border-2 border-indigo-500/25">{{$expense->title}}</td>
-                <td class="text-center  border-2 border-indigo-500/25">{{$expense->status}}</td>
+                <td class="text-center  border-2 border-indigo-500/25">{{ Str::title($expense->status) }}</td>
                 <td class="text-center  border-2 border-indigo-500/25">{{$expense ->getTotalCostAttribute()}}</td>
                 <td class="text-center  border-2 border-indigo-500/25">{{$expense->created_at->format('Y-m-d')}}</td>
                 <td >

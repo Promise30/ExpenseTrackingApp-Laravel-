@@ -5,10 +5,12 @@ namespace App\Enums;
 enum ExpenseCategory: string
 {
     //
-    case FOOD = "food";
-    case UTILITIES = "utilities";
-    case TRANSPORTATION = "transportation";
-    case LEISURE = "leisure";
-    case OTHERS = "others";
+    case FOOD = "Food";
+    case UTILITIES = "Utilities";
+    case TRANSPORTATION = "Transportation";
+    case LEISURE = "Leisure";
+    case CLOTHING = "Clothing";
+    case MISCELLANEOUS = "Miscellaneous";
+    case OTHERS = "Others";
 
 }

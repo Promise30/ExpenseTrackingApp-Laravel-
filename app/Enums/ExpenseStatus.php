@@ -5,9 +5,9 @@ namespace App\Enums;
 enum ExpenseStatus: string
 {
     //
-    case PENDING = 'pending';
-    case APPROVED = 'approved';
-    case REJECTED = 'rejected';
+    case PENDING = 'Pending';
+    case APPROVED = 'Approved';
+    case REJECTED = 'Rejected';
 
 }
 

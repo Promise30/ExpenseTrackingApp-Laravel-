@@ -10,7 +10,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ExpenseApprovedMail extends Mailable
+class ExpenseApprovedMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
     protected $expense;
@@ -39,7 +39,7 @@ class ExpenseApprovedMail extends Mailable
      */
     public function content(): Content
     {
-        return new Content(
+        return new Content( 
             view: 'expenses.mails.expense-accepted-mail',
             with: [
                 'expenseTitle'=>$this->expense->title,

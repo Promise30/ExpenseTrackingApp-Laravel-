@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\NotificationController;
 
 Route::get('/', function () {
@@ -47,7 +49,15 @@ Route::name('notification.')->group(function () {
     Route::controller(NotificationController::class)->group(function () {
         Route::get('/notifications', 'allNotifications')->name('allNotifications');
         Route::get('/notifications/{id}', 'read')->name('read');
-        Route::get('/notifications/readAll', 'markAllAsRead')->name('readAll');
+        Route::post('/notifications/readAll', 'markAllAsRead')->name('readAll');
+    });
+});
+
+Route::middleware('auth')->prefix('admin')->group(function () {
+    Route::controller(SuperAdminController::class)->group(function () {
+        Route::get('/', 'index')->name('admin');
+        Route::get('/assignNewRole/{user}', 'assignRole')->name('assignRole');
+        Route::post('/storeRole', 'storeAssignedRole')->name('storeAssignedRole');
     });
 });
 require __DIR__.'/auth.php';
